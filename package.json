@@ -1,0 +1,31 @@
+{
+  "name": "googledoc-to-json",
+  "version": "0.0.1",
+  "description": "Read a Google Drive Doc and convert to JSON via ArchieML",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bradoyler/googledoc-to-json.git"
+  },
+  "keywords": [
+    "google",
+    "archieml",
+    "drive",
+    "json"
+  ],
+  "dependencies": {
+    "googleapis":"2.1.7",
+    "htmlparser2":"3.9.0",
+    "html-entities":"1.2.0",
+    "archieml":"0.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/bradoyler/googledoc-to-json/issues"
+  },
+  "homepage": "https://github.com/bradoyler/googledoc-to-json",
+  "author": "Brad Oyler <bradoyler@gmail.com> (github.com/bradoyler)",
+  "license": "MIT"
+}
