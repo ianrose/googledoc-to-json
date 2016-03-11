@@ -10,7 +10,12 @@ var gDocToArchieML = {};
 
 gDocToArchieML.config = function config(gConfig) {
     var OAuth2 = google.auth.OAuth2;
-    oauth2Client = new OAuth2(gConfig.client_id, gConfig.client_secret, gConfig.redirect_urls[0]);
+    var redirectUrls = [''];
+    if(gConfig.redirect_urls && gConfig.redirect_urls[0]) {
+        redirectUrls = gConfig.redirect_urls[0];
+    }
+
+    oauth2Client = new OAuth2(gConfig.client_id, gConfig.client_secret, redirectUrls);
     gDrive = google.drive({ version: 'v3', auth: oauth2Client });
     return gDocToArchieML;
 };
