@@ -6,22 +6,16 @@ var google = require('googleapis');
 
 var gDrive, oauth2Client;
 
-(function gDocToArchieML() {
-    var gConfig = null;
-    try {
-        gConfig = require('./config.json').google;
-    }
-    catch (ex) {
-        console.error('###### ERROR: no config.json present #######');
-    }
+var gDocToArchieML = {};
 
+gDocToArchieML.config = function config(gConfig) {
     var OAuth2 = google.auth.OAuth2;
     oauth2Client = new OAuth2(gConfig.client_id, gConfig.client_secret, gConfig.redirect_urls[0]);
     gDrive = google.drive({ version: 'v3', auth: oauth2Client });
+    return gDocToArchieML;
+};
 
-}());
-
-function getArchieML(options, callback) {
+gDocToArchieML.getArchieML = function (options, callback) {
 
     oauth2Client.setCredentials(options.oAuthTokens);
 
@@ -100,16 +94,13 @@ function getArchieML(options, callback) {
         parser.write(docHtml);
         parser.done();
     });
-}
+};
 
-function getFileInfo(options, callback) {
-
+gDocToArchieML.getFileInfo = function getFileInfo(options, callback) {
     oauth2Client.setCredentials(options.oAuthTokens);
     gDrive.files.get({fileId:options.fileId}, function (err, doc) {
         callback(err, doc);
     });
-}
+};
 
-module.exports.getFileInfo = getFileInfo;
-module.exports.getArchieML = getArchieML;
-
+module.exports = gDocToArchieML;

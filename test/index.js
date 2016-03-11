@@ -1,9 +1,9 @@
-var gDocToArchie = require('./../index');
-var gConfig = require('../config.json').google;
+var myConfig = require('../config.json').google;
+var gDocToArchie = require('./../index').config(myConfig);
 
 var options = {
     fileId: '1gTERIVPV_0yoMXc6mlBtBpNvaoH5pIU2IC-75V_Qcas',
-    oAuthTokens: gConfig.oAuthTokens
+    oAuthTokens: myConfig.oAuthTokens
 };
 
 gDocToArchie.getArchieML(options, function (err, aml) {
