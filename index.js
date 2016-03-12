@@ -6,21 +6,22 @@ var google = require('googleapis');
 
 var gDrive, oauth2Client;
 
-var gDocToArchieML = {};
-
-gDocToArchieML.config = function config(gConfig) {
-    var OAuth2 = google.auth.OAuth2;
-    var redirectUrls = [''];
-    if(gConfig.redirect_urls && gConfig.redirect_urls[0]) {
-        redirectUrls = gConfig.redirect_urls[0];
+function gDocToJSON(options) {
+    if(!options.client_id || !options.client_secret) {
+        throw new Error('Missing client_id or client_secret');
     }
 
-    oauth2Client = new OAuth2(gConfig.client_id, gConfig.client_secret, redirectUrls);
-    gDrive = google.drive({ version: 'v3', auth: oauth2Client });
-    return gDocToArchieML;
-};
+    var OAuth2 = google.auth.OAuth2;
+    var redirectUrls = [''];
+    if(options.redirect_urls && options.redirect_urls[0]) {
+        redirectUrls = options.redirect_urls[0];
+    }
 
-gDocToArchieML.getArchieML = function (options, callback) {
+    oauth2Client = new OAuth2(options.client_id, options.client_secret, redirectUrls);
+    gDrive = google.drive({ version: 'v3', auth: oauth2Client });
+}
+
+gDocToJSON.prototype.getArchieML = function (options, callback) {
 
     oauth2Client.setCredentials(options.oAuthTokens);
 
@@ -101,11 +102,11 @@ gDocToArchieML.getArchieML = function (options, callback) {
     });
 };
 
-gDocToArchieML.getFileInfo = function getFileInfo(options, callback) {
+gDocToJSON.prototype.getFileInfo = function getFileInfo(options, callback) {
     oauth2Client.setCredentials(options.oAuthTokens);
     gDrive.files.get({fileId:options.fileId}, function (err, doc) {
         callback(err, doc);
     });
 };
 
-module.exports = gDocToArchieML;
+module.exports = gDocToJSON;
