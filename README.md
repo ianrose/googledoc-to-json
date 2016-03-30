@@ -18,5 +18,11 @@ see 'test' folder
  $ npm test
  ```
 
+## CLI
+```
+$ npm install -g googledoc-to-json
+$ googledoc-to-json <doc-id> -c config.json -o output.json
+```
+
 ## Todos:
 - Add Mocha tests

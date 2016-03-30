@@ -20,10 +20,14 @@
     "googleapis": "2.1.7",
     "htmlparser2": "3.9.0",
     "html-entities": "1.2.0",
+    "commander": "2.9.0",
     "archieml": "0.3.1"
   },
   "bugs": {
     "url": "https://github.com/bradoyler/googledoc-to-json/issues"
+  },
+  "bin": {
+    "googledoc-to-json": "./bin/googledoc-to-json"
   },
   "homepage": "https://github.com/bradoyler/googledoc-to-json",
   "author": "Brad Oyler <bradoyler@gmail.com> (github.com/bradoyler)",
