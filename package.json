@@ -27,7 +27,7 @@
     "url": "https://github.com/bradoyler/googledoc-to-json/issues"
   },
   "bin": {
-    "gdoc": "./bin/gdoc.js"
+    "googledoc-to-json": "./bin/googledoc-to-json"
   },
   "homepage": "https://github.com/bradoyler/googledoc-to-json",
   "author": "Brad Oyler <bradoyler@gmail.com> (github.com/bradoyler)",

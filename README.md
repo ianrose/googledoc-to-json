@@ -20,8 +20,8 @@ see 'test' folder
 
 ## CLI
 ```
-$ npm install googledoc-to-json -g
-$ gdoc <doc id> -c config.json -o output.json
+$ npm install -g googledoc-to-json
+$ googledoc-to-json <doc-id> -c config.json -o output.json
 ```
 
 ## Todos:
